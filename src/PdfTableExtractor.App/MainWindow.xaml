@@ -22,6 +22,7 @@
     </Window.DataContext>
 
     <DockPanel LastChildFill="True">
+
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
                 <TextBlock Text="{Binding StatusText}" />
@@ -55,33 +56,66 @@
 
                     <StackPanel Grid.Column="0" Margin="0,0,12,0">
                         <TextBlock FontWeight="SemiBold" Text="Mode" Margin="0,0,0,8"/>
+
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,14">
-                            <ToggleButton Width="140" Height="40" Margin="0,0,10,0" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding IsMaterialMode}">
+                            <ToggleButton Width="140" Height="40" Margin="0,0,10,0"
+                                          Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                                          IsChecked="{Binding IsMaterialMode}">
                                 <TextBlock Text="Material" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </ToggleButton>
-                            <ToggleButton Width="140" Height="40" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding IsToolingMode}">
+
+                            <ToggleButton Width="140" Height="40"
+                                          Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                                          IsChecked="{Binding IsToolingMode}">
                                 <TextBlock Text="Tooling" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </ToggleButton>
                         </StackPanel>
 
                         <TextBlock FontWeight="SemiBold" Text="Input" Margin="0,0,0,8"/>
+
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
-                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Command="{Binding SelectPdfFilesCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource BoolNot}}" Margin="0,0,10,0" Padding="14,8">Select PDF Files</Button>
-                            <Button Style="{StaticResource MaterialDesignOutlinedButton}" Command="{Binding SelectFolderCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource BoolNot}}" Padding="14,8">Select Folder</Button>
+                            <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                    Command="{Binding SelectPdfFilesCommand}"
+                                    IsEnabled="{Binding IsBusy, Converter={StaticResource BoolNot}}"
+                                    Margin="0,0,10,0" Padding="14,8">
+                                Select PDF Files
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                                    Command="{Binding SelectFolderCommand}"
+                                    IsEnabled="{Binding IsBusy, Converter={StaticResource BoolNot}}"
+                                    Padding="14,8">
+                                Select Folder
+                            </Button>
                         </StackPanel>
 
                         <TextBlock FontWeight="SemiBold" Text="Output" Margin="0,12,0,8"/>
-                        <Button Style="{StaticResource MaterialDesignRaisedButton}" Command="{Binding SelectOutputFolderCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource BoolNot}}" Padding="14,8" Margin="0,0,0,10">Select Output Folder</Button>
 
-                        <Button Style="{StaticResource MaterialDesignRaisedButton}" Background="#2E7D32" Foreground="White" Command="{Binding StartExtractionCommand}" IsEnabled="{Binding CanStart}" Padding="14,10">Start Extraction</Button>
+                        <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                Command="{Binding SelectOutputFolderCommand}"
+                                IsEnabled="{Binding IsBusy, Converter={StaticResource BoolNot}}"
+                                Padding="14,8" Margin="0,0,0,10">
+                            Select Output Folder
+                        </Button>
+
+                        <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                Background="#2E7D32" Foreground="White"
+                                Command="{Binding StartExtractionCommand}"
+                                IsEnabled="{Binding CanStart}"
+                                Padding="14,10">
+                            Start Extraction
+                        </Button>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1">
                         <TextBlock FontWeight="SemiBold" Text="Selected PDFs" Margin="0,0,0,8"/>
-                        <ListBox ItemsSource="{Binding SelectedPdfFiles}" Height="180" BorderThickness="1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
+                        <ListBox ItemsSource="{Binding SelectedPdfFiles}" Height="180"
+                                 BorderThickness="1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
 
                         <TextBlock FontWeight="SemiBold" Text="Output Folder" Margin="0,12,0,8"/>
-                        <TextBox Text="{Binding OutputFolder}" IsReadOnly="True" materialDesign:HintAssist.Hint="Output folder" BorderThickness="1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
+                        <TextBox Text="{Binding OutputFolder}" IsReadOnly="True"
+                                 materialDesign:HintAssist.Hint="Output folder"
+                                 BorderThickness="1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
                     </StackPanel>
                 </Grid>
             </materialDesign:Card>
@@ -95,10 +129,18 @@
 
                     <DockPanel Grid.Row="0" Margin="0,0,0,10">
                         <TextBlock FontSize="16" FontWeight="SemiBold" Text="Live Log" DockPanel.Dock="Left"/>
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding ClearLogCommand}" DockPanel.Dock="Right" Padding="12,6" IsEnabled="{Binding IsBusy, Converter={StaticResource BoolNot}}">Clear</Button>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                Command="{Binding ClearLogCommand}"
+                                DockPanel.Dock="Right" Padding="12,6"
+                                IsEnabled="{Binding IsBusy, Converter={StaticResource BoolNot}}">
+                            Clear
+                        </Button>
                     </DockPanel>
 
-                    <TextBox Grid.Row="1" Text="{Binding LiveLogText}" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" FontFamily="Consolas" BorderThickness="1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
+                    <TextBox Grid.Row="1" Text="{Binding LiveLogText}" IsReadOnly="True"
+                             TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                             HorizontalScrollBarVisibility="Auto" FontFamily="Consolas"
+                             BorderThickness="1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
                 </Grid>
             </materialDesign:Card>
 

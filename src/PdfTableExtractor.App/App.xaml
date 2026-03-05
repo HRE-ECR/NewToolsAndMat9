@@ -10,13 +10,12 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
 
-                <!-- Material Design theme configuration -->
                 <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Blue" SecondaryColor="Orange" />
 
-                <!-- IMPORTANT (MaterialDesignThemes 5.0+): Defaults renamed -->
+                <!-- MaterialDesignThemes v5+: use MaterialDesign2.Defaults.xaml or MaterialDesign3.Defaults.xaml -->
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
 
-                <!-- Temporary compatibility mapping for older brush keys (MaterialDesignPaper, etc.) -->
+                <!-- Keeps older brush keys like MaterialDesignPaper working -->
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ObsoleteBrushes.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
