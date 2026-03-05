@@ -1,0 +1,31 @@
+name: Build Windows Single-File EXE
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore
+        run: dotnet restore PdfTableExtractor.sln
+
+      - name: Publish (win-x64, single file)
+        run: dotnet publish src/PdfTableExtractor.App/PdfTableExtractor.App.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PdfTableExtractor_win-x64_singlefile
+          path: src/PdfTableExtractor.App/bin/Release/net8.0-windows/win-x64/publish/*.exe
+          if-no-files-found: error
